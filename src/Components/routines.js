@@ -25,7 +25,6 @@ const Routines = ( {routines} ) => {
                                     }}
                                     >
                                     View
-                                    {/* <Link to={`/routines/${currentItem.id}`}>View</Link> */}
                                     </button>
                                 </li>
                     })}
