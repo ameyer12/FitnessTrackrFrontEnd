@@ -1,4 +1,4 @@
-const baseURL = 'http://fitnesstrac-kr.herokuapp.com/api/some-endpoint'
+const baseURL = 'http://fitnesstrac-kr.herokuapp.com/api'
 
 export const registerUser = async (username, password) => {
     try {
@@ -14,6 +14,7 @@ export const registerUser = async (username, password) => {
                 }
             })
         })
+
         const result = await response.json();
         return result;
     } catch (err) {
@@ -157,7 +158,7 @@ export const updateActivity = async (token, { name, description }) => {
     }
 }
 
-export const pubRoutinesByAct = async (token, { activityId }) => {
+export const getPublicRoutinesByActivity = async (token, { activityId }) => {
     try {
         const response = await fetch(`${baseURL}/activities/${activityId}/routines`, {
             headers: {
@@ -173,23 +174,25 @@ export const pubRoutinesByAct = async (token, { activityId }) => {
     }
 }
 
-export const getPubRoutines = async () => {
+export const getPublicRoutines = async () => {
     try {
         const response = await fetch(`${baseURL}/routines`, {
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorizatoin': `Bearer ${token}`
             },
         })
-        const result = await response.json();
-        return result;
+
+        const results = await response.json();
+
+        return results;
+        
     } catch (error) {
         console.log("Couldn't get public routines")
         throw error
     }
 }
 
-export const makeRoutine = async (token, { name, goal, isPublic }) => {
+export const createRoutine = async (token, { name, goal, isPublic }) => {
     try {
         const response = await fetch(`${baseURL}/routines`, {
             method: "POST",
@@ -228,12 +231,12 @@ export const updateRoutine = async (token, { name, goal, isPublic }) => {
         const result = await response.json();
         return result;
     } catch (error) {
-        console.log("couldn't update ratouine")
+        console.log("couldn't update routine")
         throw error
     }
 }
 
-export const delRoutine = async ({ token, routineId }) => {
+export const deleteRoutine = async ({ token, routineId }) => {
     try {
         const response = await fetch(`${baseURL}/routines/${routineId}`, {
             method: "DELETE",
@@ -272,7 +275,7 @@ export const addActivity = async (token, { activityId, count, duration }) => {
     }
 }
 
-export const updateRoutAct = async (token, { count, duration }) => {
+export const updateRoutineActivity = async (token, { count, duration }) => {
     try {
         const response = await fetch(`${baseURL}/routine_activities/${routineActivityId}`, {
             method: "PATCH",
@@ -289,7 +292,7 @@ export const updateRoutAct = async (token, { count, duration }) => {
     }
 }
 
-export const delRoutAct = async (token, routineActivityId) => {
+export const deleteRoutineActivity = async (token, routineActivityId) => {
     try {
         const response = await fetch(`${baseURL}/routine_activities`, {
             method: "DELETE",
