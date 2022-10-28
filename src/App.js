@@ -9,16 +9,19 @@ import {
     MyRoutines,
     Activities,
     Login,
-    Register
+    Register,
+    Profile
  } from "./Components";
 import { 
-    getPublicRoutines
+    getPublicRoutines,
+    registerUser
  } from "./api";
 
 
 const App = () => {
 
     const [routines, setRoutines] = useState([]);
+    const [token, setToken] = useState("");
 
     const navigate = useNavigate();
 
@@ -42,7 +45,8 @@ const App = () => {
                 <Route path="/myroutines" element={<MyRoutines/>}/>
                 <Route path="/activities" element={<Activities />}/>
                 <Route path="/login" element={<Login />}/>
-                <Route path="/register" element={<Register />}/>
+                <Route path="/register" element={<Register setToken={setToken} navigate={navigate}/>}/>
+                <Route path="/profile" element={<Profile />}/>
             </Routes>
     </div>
   );

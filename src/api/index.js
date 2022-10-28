@@ -2,27 +2,28 @@ const baseURL = 'http://fitnesstrac-kr.herokuapp.com/api'
 
 export const registerUser = async (username, password) => {
     try {
-        const response = await fetch(`${baseURL}/users/registers`, {
+        const response = await fetch(`${baseURL}/users/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user: {
                     username: username,
                     password: password
-                }
             })
         })
 
-        const result = await response.json();
-        return result;
+        const results = await response.json();
+
+        console.log(results)
+ 
+        return results;
     } catch (err) {
         console.log('Error registering user')
     }
 };
 
-export const logInUser = async (username, password) => {
+export const loginUser = async (username, password) => {
     try {
         const response = await fetch(`${baseURL}/users/login`, {
             method: 'POST',
@@ -185,7 +186,7 @@ export const getPublicRoutines = async () => {
         const results = await response.json();
 
         return results;
-        
+
     } catch (error) {
         console.log("Couldn't get public routines")
         throw error

@@ -14,6 +14,7 @@ const Navbar = () => {
                     <a class="nav-item nav-link" href="/routines">Routines</a>
                     <a class="nav-item nav-link" href="/myroutines">My Routines</a>
                     <a class="nav-item nav-link" href="/activities">Activities</a>
+                    <a class="nav-item nav-link" href="/profile">Profile</a>
                     <a class="nav-item nav-link" href="/login">Login</a>
                     <a class="nav-item nav-link" href="/register">Register</a>
                 </div>

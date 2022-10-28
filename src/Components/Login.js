@@ -7,8 +7,7 @@ const Login = () => {
             <form>
                 <div class="form-group">
                 <label for="exampleInputEmail1">Username</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-                <small id="emailHelp" class="form-text text-muted">We'll never share your username with anyone else.</small>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username"/>
                 </div>
                 <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>

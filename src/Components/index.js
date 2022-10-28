@@ -6,3 +6,5 @@ export {default as SingleRoutine } from "./SingleRoutine"
 export {default as MyRoutines } from "./MyRoutines"
 export {default as Login } from "./Login"
 export {default as Register } from "./Register"
+export {default as Profile } from "./Profile"
+
