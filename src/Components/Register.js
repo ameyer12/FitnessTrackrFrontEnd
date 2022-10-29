@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { registerUser } from '../api';
+import './register.css'
 import swal from 'sweetalert';
 
 const Register = ({setToken, navigate}) => {
@@ -10,8 +11,6 @@ const Register = ({setToken, navigate}) => {
 
     const handleSubmit = async () => {
         const results = await registerUser(username, password);
-
-        // console.log(results)
         
         if(results.message === "you're signed up!") {
             setToken(results.token)
@@ -31,8 +30,8 @@ const Register = ({setToken, navigate}) => {
 
     return (
         <div>
-            <h1>Register</h1>
-            <form>
+            <h1 className='register-h1'>Register</h1>
+            <form className="card" id="register-form">
                 <div class="form-group">
                 <label for="exampleInputEmail1">Username</label>
                 <input 
@@ -44,7 +43,6 @@ const Register = ({setToken, navigate}) => {
                 onChange={(ev) => {
                     ev.preventDefault();
                     setUsername(ev.target.value)
-                    console.log(username)
                 }}
                 />
                 </div>
@@ -58,7 +56,6 @@ const Register = ({setToken, navigate}) => {
                 onChange={(ev) => {
                     ev.preventDefault();
                     setPassword(ev.target.value)
-                    console.log(password)
                 }}
                 />
                 </div>

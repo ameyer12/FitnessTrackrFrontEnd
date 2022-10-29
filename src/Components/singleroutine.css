@@ -1,0 +1,23 @@
+#single-routine-button {
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+.single-routine-h1 {
+    text-align: center;
+}
+
+.single-routine-p {
+    margin-left: 1.2%;
+    margin-top: 1%
+}
+
+/* li:last-child {
+    background-color: black;
+    color: aliceblue;
+    margin-bottom: 100rem;
+} */
+
+.spacing-div {
+    padding: 2.5rem;
+}

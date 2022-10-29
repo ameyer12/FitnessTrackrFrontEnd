@@ -31,10 +31,8 @@ export const loginUser = async (username, password) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user: {
                     username,
                     password
-                }
             })
         })
         const result = await response.json();
@@ -52,8 +50,10 @@ export const getUserDetails = async (token) => {
                 'Authorization': `Bearer ${token}`
             },
         })
-        const result = response.json;
-        return result;
+
+        const results = await response.json();
+
+        return results;
     } catch (error) {
         console.log("Couldn't get user details")
         throw error
@@ -105,6 +105,7 @@ export const getActivities = async (token) => {
             }
         })
         const results = await response.json();
+        console.log(results)
         return (results)
     } catch (error) {
         console.log("couldn't get activities")
