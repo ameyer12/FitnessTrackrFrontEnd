@@ -7,9 +7,12 @@ import {
     Navbar, 
     Footer,
     Routines,
+    CreateRoutine,
     SingleRoutine, 
     MyRoutines,
     Activities,
+    AddActivity,
+    EditActivity,
     Login,
     Register,
     Profile
@@ -17,8 +20,10 @@ import {
 import { 
     getPublicRoutines,
     getUserDetails,
-    getActivities
+    getActivities,
+    getRoutinesByUser,
  } from "./api";
+import CreateActivity from "./Components/CreateActivity";
 
 
 const App = () => {
@@ -26,7 +31,7 @@ const App = () => {
     const [routines, setRoutines] = useState([]);
     const [activities, setActivities] = useState([]);
     const [token, setToken] = useState("");
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({});
 
     const navigate = useNavigate();
 
@@ -46,16 +51,15 @@ const App = () => {
 
         const results = await getActivities(storedToken)
 
-        console.log(results)
+        setActivities(results)
     }
 
-    const fetchUserDetails = async () => {
+   async function fetchUserDetails() {
         const storedToken = window.localStorage.getItem('token')
 
         const results = await getUserDetails(storedToken)
 
         setUser(results)
-
     }
 
     useEffect(() => {
@@ -72,14 +76,18 @@ const App = () => {
 
   return (
     <div>
-        <Navbar logout={logout} navigate={navigate}/>
+        <Navbar logout={logout} navigate={navigate} user={user}/>
             <Routes>
                 <Route path="/" element={<Home />}/>
-                <Route path="/routines" element={<Routines fetchRoutines={fetchRoutines} routines={routines} />}/>
-                <Route path="/routines/:id" element={<SingleRoutine routines={routines} navigate={navigate} />} />
-                <Route path="/myroutines" element={<MyRoutines/>}/>
-                <Route path="/activities" element={<Activities fetchRoutines={fetchRoutines} activities={activities}/>}/>
-                <Route path="/login" element={<Login setToken={setToken} navigate={navigate} />}/>
+                <Route path="/routines" element={<Routines fetchRoutines={fetchRoutines} routines={routines} navigate={navigate}/>}/>
+                <Route path="/createroutine" element={<CreateRoutine fetchRoutines={fetchRoutines} routines={routines} navigate={navigate}/>}/>
+                <Route path="/routines/:id" element={<SingleRoutine routines={routines} navigate={navigate} user={user}/>} />
+                <Route path="/users/:username/routines" element={<MyRoutines navigate={navigate}/>}/>
+                <Route path="/activities" element={<Activities fetchRoutines={fetchRoutines} activities={activities} navigate={navigate}/>}/>
+                <Route path="/routines/:routineId/activities" element={<AddActivity fetchRoutines={fetchRoutines} fetchActivities={fetchActivities} activities={activities} navigate={navigate} user={user}/>}/>
+                <Route path="/createactivity" element={<CreateActivity fetchActivities={fetchActivities} activities={activities} navigate={navigate}/>}/>
+                <Route path="/activities/:activityId" element={<EditActivity fetchActivities={fetchActivities} activities={activities} navigate={navigate}/>}/>
+                <Route path="/login" element={<Login setToken={setToken} navigate={navigate}/>}/>
                 <Route path="/register" element={<Register setToken={setToken} navigate={navigate}/>}/>
                 <Route path="/profile" element={<Profile fetchUserDetails={fetchUserDetails} user={user}/>}/>
             </Routes>

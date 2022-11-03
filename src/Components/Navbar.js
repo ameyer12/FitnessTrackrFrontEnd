@@ -1,7 +1,9 @@
 import React from 'react'
 import './Navbar.css' 
 
-const Navbar = ({logout}) => {
+const Navbar = ({logout, user}) => {
+
+    const { username } = user;
 
     const storedToken = window.localStorage.getItem('token')
 
@@ -16,7 +18,7 @@ const Navbar = ({logout}) => {
                             <a class="nav-item nav-link" href="/">Home</a>
                             <a class="nav-item nav-link" href="/routines">Routines</a>
                             <a class="nav-item nav-link" href="/activities">Activities</a>
-                            <a class="nav-item nav-link" href="/myroutines">My Routines</a>
+                            <a class="nav-item nav-link" href={`/users/${username}/routines`}>My Routines</a>
                             <a class="nav-item nav-link" href="/profile">Profile</a>
                             <a 
                             class="nav-item nav-link" 
@@ -38,7 +40,6 @@ const Navbar = ({logout}) => {
                             <div class="navbar-nav">
                                 <a class="nav-item nav-link" href="/">Home</a>
                                 <a class="nav-item nav-link" href="/routines">Routines</a>
-                                <a class="nav-item nav-link" href="/activities">Activities</a>
                                 <a class="nav-item nav-link" href="/login">Login</a>
                                 <a class="nav-item nav-link" href="/register">Register</a>
                             </div>

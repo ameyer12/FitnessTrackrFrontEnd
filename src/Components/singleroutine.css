@@ -12,12 +12,12 @@
     margin-top: 1%
 }
 
-/* li:last-child {
-    background-color: black;
-    color: aliceblue;
-    margin-bottom: 100rem;
-} */
-
 .spacing-div {
     padding: 2.5rem;
+}
+
+#add-activity-button {
+    margin-top: 1%;
+    background-color: green;
+    border-color: green;
 }

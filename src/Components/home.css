@@ -4,9 +4,42 @@ html, body {
   width: 100%;
 }
 
-
 .homepage {
-    margin-top: 15%;
+    margin-top: 5%;
     text-align: center;
     width: 100%;
+}
+
+#carousel-images {
+  display: flex;
+  height: 25rem;
+  width: 60%;
+  margin-left: 19.6%;
+  position: sticky;
+  flex-shrink: 0;
+  margin-top: 3rem;
+}
+
+.carousel-section {
+  flex-shrink: 0;
+  height: 40rem;
+  width: 30rem;
+}
+
+/* .carousel-inner {
+  box-shadow: 10px 10px 5px #ccc;
+  height: 20rem;
+  flex-shrink: 0;
+} */
+
+.homepage-spacing-div {
+  padding: 3rem;
+}
+
+@media (min-width: 700px) {
+  .carousel-inner {
+    box-shadow: 10px 10px 5px #ccc;
+    height: 20rem;
+    flex-shrink: 0;
+  }
 }

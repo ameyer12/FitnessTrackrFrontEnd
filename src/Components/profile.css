@@ -1,4 +1,13 @@
 #profile-page {
+    background-image: url("https://i.postimg.cc/zfP8h7GT/ambitious-creative-co-rick-barrett-uwk8-IS-Hf-J8-unsplash.jpg");
     text-align: center;
     margin-top: 5%;
+    height: 45rem;
+    margin-top: 0%;
+}
+
+#profile-page-h1 {
+    padding-top: 10%;
+    font-size: 50pt;
+    color: white;
 }

@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+
 const baseURL = 'http://fitnesstrac-kr.herokuapp.com/api'
 
 export const registerUser = async (username, password) => {
@@ -60,36 +63,20 @@ export const getUserDetails = async (token) => {
     }
 }
 
-export const getRoutinesByUser = async (
-    token,
-    // {id,
-    // creatorId,
-    // creatorName,
-    // isPublic,
-    // name,
-    // goal,
-    // activity}
-) => {
+export const getRoutinesByUser = async (username) => {
     try {
-        const response = await fetch(`${baseURL}/users/routines`, {
+        const storedToken = window.localStorage.getItem('token')
+
+        const response = await fetch(`${baseURL}/users/${username}/routines`, {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${storedToken}`
             },
-            // body: JSON.stringify({
-            //     routines: {
-            //         id,
-            //         creatorId,
-            //         creatorName,
-            //         isPublic,
-            //         name,
-            //         goal,
-            //         activity
-            //     }
-            // })
         })
-        const result = response.json();
-        return result;
+
+        const results = response.json();
+
+        return results;
     } catch (error) {
         console.log("Couldn't get routines by user")
         throw error
@@ -105,7 +92,7 @@ export const getActivities = async (token) => {
             }
         })
         const results = await response.json();
-        console.log(results)
+  
         return (results)
     } catch (error) {
         console.log("couldn't get activities")
@@ -113,7 +100,7 @@ export const getActivities = async (token) => {
     }
 }
 
-export const createActivity = async (token, { name, description }) => {
+export const createActivity = async (token, name, description) => {
     try {
         const response = await fetch(`${baseURL}/activities`, {
             method: "POST",
@@ -122,38 +109,37 @@ export const createActivity = async (token, { name, description }) => {
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-                activity: {
-                    id,
-                    name,
-                    description
-                }
+                name,
+                description
             })
         })
-        const result = await response.json();
-        return result;
+        const results = await response.json();
+        
+        return results;
     } catch (error) {
         console.log("couldn't create activity")
         throw error
     }
 }
 
-export const updateActivity = async (token, { name, description }) => {
+export const updateActivity = async (token, name, description, activityId) => {
     try {
-        const response = await fetch(`${baseURL}/activities`, {
+
+        const response = await fetch(`${baseURL}/activities/${activityId}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-                activity: {
-                    name,
-                    description
-                }
+                name,
+                description
             })
         })
-        const result = await response.json();
-        return result;
+
+        const results = await response.json();
+
+        return results;
     } catch (error) {
         console.log("couldn't update activity")
         throw error
@@ -194,7 +180,7 @@ export const getPublicRoutines = async () => {
     }
 }
 
-export const createRoutine = async (token, { name, goal, isPublic }) => {
+export const createRoutine = async (token, name, goal, isPublic) => {
     try {
         const response = await fetch(`${baseURL}/routines`, {
             method: "POST",
@@ -208,8 +194,9 @@ export const createRoutine = async (token, { name, goal, isPublic }) => {
                 isPublic
             })
         })
-        const result = await response.json();
-        return result;
+        const results = await response.json();
+
+        return results;
     } catch (error) {
         console.log("couldn't make routine")
         throw error
@@ -231,6 +218,7 @@ export const updateRoutine = async (token, { name, goal, isPublic }) => {
             })
         })
         const result = await response.json();
+        
         return result;
     } catch (error) {
         console.log("couldn't update routine")
@@ -238,7 +226,7 @@ export const updateRoutine = async (token, { name, goal, isPublic }) => {
     }
 }
 
-export const deleteRoutine = async ({ token, routineId }) => {
+export const deleteRoutine = async (token, routineId) => {
     try {
         const response = await fetch(`${baseURL}/routines/${routineId}`, {
             method: "DELETE",
@@ -248,15 +236,15 @@ export const deleteRoutine = async ({ token, routineId }) => {
             },
 
         })
-        const result = await response.json();
-        return result;
+        const results = await response.json();
+        return results;
     } catch (error) {
         console.log("couldn't delete routine")
         throw error
     }
 }
 
-export const addActivity = async (token, { activityId, count, duration }) => {
+export const addActivity = async (token, activityId, count, duration, routineId) => {
     try {
         const response = await fetch(`${baseURL}/routines/${routineId}/activities`, {
             method: "POST",
@@ -269,10 +257,10 @@ export const addActivity = async (token, { activityId, count, duration }) => {
                 duration
             })
         })
-        const result = await response.json();
-        return result;
+        const results = await response.json();
+        return results;
     } catch (error) {
-        console.log("coulsn't add activity to routine")
+        console.log("couldn't add activity to routine")
         throw error
     }
 }
@@ -303,7 +291,6 @@ export const deleteRoutineActivity = async (token, routineActivityId) => {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-
 
         }
         )
