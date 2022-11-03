@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-const baseURL = 'http://fitnesstrac-kr.herokuapp.com/api'
+const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api'
 
 export const registerUser = async (username, password) => {
     try {
@@ -171,6 +171,8 @@ export const getPublicRoutines = async () => {
         })
 
         const results = await response.json();
+
+        console.log(results)
 
         return results;
 
