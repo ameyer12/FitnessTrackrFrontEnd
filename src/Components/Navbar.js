@@ -8,12 +8,12 @@ const Navbar = ({logout, user}) => {
     const storedToken = window.localStorage.getItem('token')
 
     if(storedToken !== null) {
-        return <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="/">Fitness Tracker</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        return <nav class="navbar navbar-expand-md  navbar-light bg-light">
+                    <a class="navbar-brand navbar" href="/">Fitness Tracker</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-bar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="collapse navbar-collapse" id="navigation-bar">
                         <div class="navbar-nav">
                             <a class="nav-item nav-link" href="/">Home</a>
                             <a class="nav-item nav-link" href="/routines">Routines</a>
@@ -31,7 +31,7 @@ const Navbar = ({logout, user}) => {
                     </div>
                 </nav>
     } else {
-            return <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            return <nav class="navbar navbar-expand-md navbar-light bg-light">
                         <a class="navbar-brand" href="/">Fitness Tracker</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
