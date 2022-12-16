@@ -1,1 +1,1 @@
-# FitnessTrackrFrontEnd
+A REACT app that allows users to register an account, build fitness routines, create custom workouts, and browse routines and activities created by other users. Tech stack: REACT, JSON, HTML, REST API, HTML/CSS, Bootstrap, Node, Express, and PostgreSQL.
