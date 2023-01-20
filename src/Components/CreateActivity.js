@@ -13,7 +13,6 @@ const CreateActivity = ({navigate , fetchActivities}) => {
 
     const handleCreate = async () => {
       const results = await createActivity(storedToken, name, description);
-      console.log(results)
 
       if(results.name == 'error'){
         swal("Error creating activity!" , "Please fill out all fields and make sure the activity name is unique!")

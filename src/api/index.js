@@ -172,8 +172,6 @@ export const getPublicRoutines = async () => {
 
         const results = await response.json();
 
-        console.log(results)
-
         return results;
 
     } catch (error) {
