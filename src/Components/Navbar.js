@@ -1,5 +1,6 @@
-import React from 'react'
-import './Navbar.css' 
+import React from 'react';
+import './Navbar.css';
+import logoImage from './Fitness.png';
 
 const Navbar = ({logout, user}) => {
 
@@ -9,7 +10,7 @@ const Navbar = ({logout, user}) => {
 
     if(storedToken !== null) {
         return <nav class="navbar navbar-expand-md  navbar-light bg-light">
-                    <a class="navbar-brand navbar" href="/">Fitness Tracker</a>
+                    <a id="navbar-brand-name" class="navbar-brand" href="/"><img className="logo-image" src={logoImage} alt="Austin Meyer Logo" width="80" height="65"/></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-bar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -32,7 +33,7 @@ const Navbar = ({logout, user}) => {
                 </nav>
     } else {
             return <nav class="navbar navbar-expand-md navbar-light bg-light">
-                        <a class="navbar-brand" href="/">Fitness Tracker</a>
+                        <a id="navbar-brand-name" class="navbar-brand" href="/"><img className="logo-image" src={logoImage} alt="Austin Meyer Logo" width="80" height="65"/></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>

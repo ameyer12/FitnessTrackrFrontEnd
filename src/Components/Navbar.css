@@ -1,6 +1,8 @@
-/* @media (max-width: 603px) {
-    .nav-item {
-        color:aqua;
-        padding-top: 10%;
-    }
-  } */
+.logo-image {
+    margin-left: 10% !important;
+    margin-top: 2%;
+}
+
+.nav-link {
+    margin-bottom: 1%;
+}
