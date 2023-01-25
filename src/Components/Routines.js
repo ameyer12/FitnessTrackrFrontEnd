@@ -43,7 +43,7 @@ const Routines = ( {routines, navigate} ) => {
       } else {
         return (
           <div>
-              <h1>Public Routines:</h1>
+              <h1 id="routines-h1">Public Routines:</h1>
               <div> {
                         routines.map((currentItem, index) => { 
                             return  <li className="card" key={index}>
